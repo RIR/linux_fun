@@ -1,0 +1,1 @@
+ls: tiedostoa /foObarR ei voi käsitellä: Tiedostoa tai hakemistoa ei ole
