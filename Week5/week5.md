@@ -101,15 +101,12 @@
     fi
     done
     ```
-<<<<<<< HEAD
     Summoning daemons. Script for daemon interface:
-=======
 
     ![Sauna](hipstafy-dropbox/hipstafied/sauna-hipstah.jpg)
 
 
      Summoning daemons. Script for daemon interface:
->>>>>>> 4fb52c022ccd651990b895753943c2a41d87f514
     
     ```
     #!/bin/bash
@@ -120,38 +117,6 @@
     case "$1" in
 	    start)
 		    echo "Hipstafy-daemon started"
-<<<<<<< HEAD
-		    nohup ./hipstafy-wait.sh > hipstafy.log 2> hip_err.log &
-		    echo $! > pid.txt
-		    ;;
-    	stop)
-		    echo "Hipstafy-daemon stopped"
-		    kill $(cat pid.txt) > hipstafy.log 2> hip_err.log
-		    ;;
-	    status)
-		    kill -0 $(cat pid.txt) > hipstafy.log 2> hip_err.log
-		    if [ $? -eq 0 ]
-		    then
-  		        echo "Daemon is alive"
-		    else 
-		        echo "Daemon is not running"
-		    fi
-		    ;;	
-	    restart)
-		    echo "Hipstafy-daemon stopped"
-		    kill $(cat pid.txt) > hipstafy.log 2> hip_err.log
-
-		    echo "Hipstafy-daemon started"
-		    nohup ./hipstafy-wait.sh > hipstafy.log 2> hip_err.log &
-		    echo $! > pid.txt
-		    ;;
-    esac
-    ```
-
-    ```
-
-    ```
-=======
 		    nohup ./hipstafy-wait.sh 2>>hip_err.log 1>>hipstafy.log &
 		    echo $! > pid.txt
 		    ;;
@@ -178,11 +143,11 @@
 	    	;;
     esac
     ```
+
     Output from hip_err.log
->>>>>>> 4fb52c022ccd651990b895753943c2a41d87f514
     
     ```  
-   Setting up watches.
+    Setting up watches.
 	Watches established.
 	mv: tiedoston ”/home/fuksi/Dev/LinuxFundamentals2016/Week5/hipstafy-dropbox/*.jpg” tilaa ei voi lukea: Tiedostoa tai hakemistoa ei ole
     ```
