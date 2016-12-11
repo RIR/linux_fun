@@ -101,6 +101,7 @@
     fi
     done
     ```
+    Summoning daemons. Script for daemon interface:
 
     ![Sauna](sauna-hipstah.jpg)
 
