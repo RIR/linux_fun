@@ -100,7 +100,7 @@
     done
     ```
 
-    ![Sauna](/hipstafy-dropbox/hipstafied/sauna-hipstah.jpg)
+    ![Sauna](hipstafy-dropbox/hipstafied/sauna-hipstah.jpg)
 
 
     Summoning deamons.
