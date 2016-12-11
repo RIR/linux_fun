@@ -79,6 +79,8 @@
     while read log; 
     do
     if [[ "$log" == *.jpg ]]; then
+    file=$(echo $log | cut -f 3 -d ' ')
+    echo "hipstafying $file"
     mv /home/fuksi/Dev/LinuxFundamentals2016/Week5/hipstafy-dropbox/*.jpg hipstafy-dropbox/to_be_hipstafied;
 
     # hipstafying happens in /hipstafy-dropbox/to_be_hipstafied. Then already hipstafied pictures will be moved to /hipstafied folder
@@ -99,7 +101,15 @@
     fi
     done
     ```
+<<<<<<< HEAD
     Summoning daemons. Script for daemon interface:
+=======
+
+    ![Sauna](hipstafy-dropbox/hipstafied/sauna-hipstah.jpg)
+
+
+     Summoning daemons. Script for daemon interface:
+>>>>>>> 4fb52c022ccd651990b895753943c2a41d87f514
     
     ```
     #!/bin/bash
@@ -110,6 +120,7 @@
     case "$1" in
 	    start)
 		    echo "Hipstafy-daemon started"
+<<<<<<< HEAD
 		    nohup ./hipstafy-wait.sh > hipstafy.log 2> hip_err.log &
 		    echo $! > pid.txt
 		    ;;
@@ -140,32 +151,49 @@
     ```
 
     ```
+=======
+		    nohup ./hipstafy-wait.sh 2>>hip_err.log 1>>hipstafy.log &
+		    echo $! > pid.txt
+		    ;;
+	    stop)
+		    echo "Hipstafy-daemon stopped"
+	    	kill $(cat pid.txt) 2>/dev/null
+	    	;;
+    	status)
+    		kill -0 $(cat pid.txt) 2>/dev/null
+		      if [ $? -eq 0 ]
+		     then
+  		       echo "Daemon is alive"
+		     else 
+		       echo "Daemon is not running"
+		     fi
+	    	;;	
+    	restart)
+		    echo "Hipstafy-daemon stopped"
+		    kill $(cat pid.txt) 2>/dev/null
+
+		    echo "Hipstafy-daemon started"
+	    	nohup ./hipstafy-wait.sh 2>>hip_err.log 1>>hipstafy.log &
+	    	echo $! > pid.txt
+	    	;;
+    esac
+    ```
+    Output from hip_err.log
+>>>>>>> 4fb52c022ccd651990b895753943c2a41d87f514
+    
+    ```  
+   Setting up watches.
+	Watches established.
+	mv: tiedoston ”/home/fuksi/Dev/LinuxFundamentals2016/Week5/hipstafy-dropbox/*.jpg” tilaa ei voi lukea: Tiedostoa tai hakemistoa ei ole
+    ```
+    
+    Output from hipstafy.log
     
     ```
-
+    hipstafying watch-your-thoughts__62381.1429316292.400.650.jpg
+    Hipstafy works only for .jpg-pictures!
     ```
 
-    ```
-
-    ```
-    
-    ```
-
-    ```
-
-    ```
-
-    ```
-
-
-    
-    
-    
-
-
-
-
-        
         
 
 

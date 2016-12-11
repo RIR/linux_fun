@@ -9,6 +9,7 @@ for inputfile in $files
 do
 prefix=${inputfile%.jpg}
 outputfile=$prefix-hipstah.jpg
+echo "hipstafying $inputfile"
 convert -sepia-tone 60% +polaroid $inputfile $outputfile
 done
 
