@@ -20,7 +20,7 @@
 
     echo "scale=2; $avg / $cnt" | bc
     ```
-2. Gone in 10 seconds. Did this in my student laptop and although the script is considerably faster than the previous (previous script would take forever to go through whole dataset), i think it's impossible to go through the dataset in 10 seconds. Here's my script and output:
+2. Gone in 10 seconds. Did this in my student laptop and although the script is considerably faster than the previous (previous script would take forever to go through whole dataset), i think it's impossible to go through the dataset in 10 seconds (in Ukko node that would probably happen, but i think the instruction on earlier in course was not to download the dataset there). Here's my script and output:
 
     ```
     #!/bin/bash
@@ -68,7 +68,7 @@
     sys	0m6.567s
     ```
 
-3. Hipstafy-dropbox. Here's the script for it and one picture hipstafied:
+3. Hipstafy-dropbox. Here's the script for it:
 
     ```
     #!/bin/bash
@@ -99,15 +99,42 @@
     fi
     done
     ```
-
-    ![Sauna](hipstafy-dropbox/hipstafied/sauna-hipstah.jpg)
-
-
-    Summoning deamons.
-4. s
+    Summoning daemons. Script for daemon interface:
     
     ```
+    #!/bin/bash
 
+    # Daemon for hipstafy-wait.sh
+
+    trap "" HUP
+    case "$1" in
+	    start)
+		    echo "Hipstafy-daemon started"
+		    nohup ./hipstafy-wait.sh > hipstafy.log 2> hip_err.log &
+		    echo $! > pid.txt
+		    ;;
+    	stop)
+		    echo "Hipstafy-daemon stopped"
+		    kill $(cat pid.txt) > hipstafy.log 2> hip_err.log
+		    ;;
+	    status)
+		    kill -0 $(cat pid.txt) > hipstafy.log 2> hip_err.log
+		    if [ $? -eq 0 ]
+		    then
+  		        echo "Daemon is alive"
+		    else 
+		        echo "Daemon is not running"
+		    fi
+		    ;;	
+	    restart)
+		    echo "Hipstafy-daemon stopped"
+		    kill $(cat pid.txt) > hipstafy.log 2> hip_err.log
+
+		    echo "Hipstafy-daemon started"
+		    nohup ./hipstafy-wait.sh > hipstafy.log 2> hip_err.log &
+		    echo $! > pid.txt
+		    ;;
+    esac
     ```
 
     ```
