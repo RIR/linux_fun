@@ -79,6 +79,8 @@
     while read log; 
     do
     if [[ "$log" == *.jpg ]]; then
+    file=$(echo $log | cut -f 3 -d ' ')
+    echo "hipstafying $file"
     mv /home/fuksi/Dev/LinuxFundamentals2016/Week5/hipstafy-dropbox/*.jpg hipstafy-dropbox/to_be_hipstafied;
 
     # hipstafying happens in /hipstafy-dropbox/to_be_hipstafied. Then already hipstafied pictures will be moved to /hipstafied folder
@@ -140,40 +142,21 @@
 	    	;;
     esac
     ```
+    Output from hip_err.log
     
-    ```
-
-    ```
-
-    ```
-
-    ```
-    
-    ```
-
-    ```
-
-    ```
-
+    ```  
+   Setting up watches.
+	Watches established.
+	mv: tiedoston ”/home/fuksi/Dev/LinuxFundamentals2016/Week5/hipstafy-dropbox/*.jpg” tilaa ei voi lukea: Tiedostoa tai hakemistoa ei ole
     ```
     
-    ```
-
-    ```
-
-    ```
-
-    ```
-
-
+    Output from hipstafy.log
     
-    
-    
+    ```
+    hipstafying watch-your-thoughts__62381.1429316292.400.650.jpg
+    Hipstafy works only for .jpg-pictures!
+    ```
 
-
-
-
-        
         
 
 
