@@ -1,4 +1,0 @@
-Host ukko161
-  User          rairanta
-  HostName      ukko161@hpc.cs.helsinki.fi
-  ProxyCommand  ssh rairanta@melkki.cs.helsinki.fi nc %h %p 2> /dev/null
